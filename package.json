@@ -1,0 +1,28 @@
+{
+  "name": "what-if",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abayo-luc/what-if.git"
+  },
+  "author": "Luc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abayo-luc/what-if/issues"
+  },
+  "homepage": "https://github.com/abayo-luc/what-if#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.7",
+    "path": "^0.12.7"
+  }
+}
