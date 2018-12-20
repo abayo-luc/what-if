@@ -13,7 +13,12 @@ app.use(express.static(path.join(__dirname, "./UI")));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./UI/index.html"));
 });
-
+app.get("/blog", (req, res) => {
+  res.sendFile(path.join(__dirname, "./UI/blog.html"));
+});
+app.get("/post", (req, res) => {
+  res.sendFile(path.join(__dirname, "./UI/post.html"));
+});
 app.use("/api", routers);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
