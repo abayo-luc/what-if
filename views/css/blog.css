@@ -1167,7 +1167,9 @@ ul.wthree_blog_events_list li i {
   border: 1px solid #fcb314;
   color: #fff !important;
 }
-
+a.text-dark {
+  color: #fcb314 !important;
+}
 /* //tags */
 
 /* //right side */
@@ -1514,4 +1516,9 @@ footer {
 
 .breadcrumb-item.active {
   color: #fcb314;
+}
+
+.card-holder {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
