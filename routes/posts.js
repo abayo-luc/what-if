@@ -1,22 +1,12 @@
 import { Router } from "express";
-
+import PostControllers from "../controllers/posts";
 const postRouters = Router();
 
 postRouters
-  .get("/posts", (req, res) => {
-    res.json({ msg: "All post" });
-  })
-  .post("/posts", (req, res) => {
-    res.json({ msg: "post post" });
-  })
-  .get("/posts/:id", (req, res) => {
-    res.json({ msg: "get one post" });
-  })
-  .put("/posts/:id", (req, res) => {
-    res.json({ message: "update one post" });
-  })
-  .delete("/posts/:id", (req, res) => {
-    res.json({ message: "delete post" });
-  });
+  .get("/posts", PostControllers.allPosts)
+  .post("/posts", PostControllers.create)
+  .get("/posts/:id", PostControllers.find)
+  .put("/posts/:id", PostControllers.update)
+  .delete("/posts/:id", PostControllers.delete);
 
 export default postRouters;

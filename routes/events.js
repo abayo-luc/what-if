@@ -1,22 +1,12 @@
 import { Router } from "express";
-
+import EventControllers from "../controllers/events";
 const eventRouters = Router();
 
 eventRouters
-  .get("/events", (req, res) => {
-    res.json({ msg: "All event" });
-  })
-  .post("/events", (req, res) => {
-    res.json({ msg: "event post" });
-  })
-  .get("/events/:id", (req, res) => {
-    res.json({ msg: "get one event" });
-  })
-  .put("/events/:id", (req, res) => {
-    res.json({ message: "update one event" });
-  })
-  .delete("/events/:id", (req, res) => {
-    res.json({ message: "delete event" });
-  });
+  .get("/events", EventControllers.allEvents)
+  .post("/events", EventControllers.create)
+  .get("/events/:id", EventControllers.find)
+  .put("/events/:id", EventControllers.update)
+  .delete("/events/:id", EventControllers.delete);
 
 export default eventRouters;
