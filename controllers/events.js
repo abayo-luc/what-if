@@ -1,4 +1,4 @@
-import { Event } from "../models";
+import { Event } from '../models';
 
 export default class EventControllers {
   static allEvents(req, res) {
@@ -7,7 +7,7 @@ export default class EventControllers {
         res.json({ events });
       })
       .catch(err => {
-        res.status(500).json("index", { errors: { message: "Unknown error" } });
+        res.status(500).json('index', { errors: { message: 'Unknown error' } });
       });
   }
 
@@ -25,7 +25,7 @@ export default class EventControllers {
       })
       .catch(err => {
         console.log(err);
-        res.status(500).json({ message: "Unknown error" });
+        res.status(500).json({ message: 'Unknown error' });
       });
   }
 
@@ -37,7 +37,7 @@ export default class EventControllers {
       })
       .catch(err => {
         console.log(err);
-        res.status(500).json({ message: "Unknown error" });
+        res.status(500).json({ message: 'Unknown error' });
       });
   }
 
@@ -53,7 +53,7 @@ export default class EventControllers {
       })
       .catch(err => {
         console.log(err);
-        res.status(500).json({ message: "Unknown error" });
+        res.status(500).json({ message: 'Unknown error' });
       });
   }
   static delete(req, res) {
@@ -62,11 +62,11 @@ export default class EventControllers {
         event.destroy();
       })
       .then(() => {
-        res.json({ message: "event removed" });
+        res.json({ message: 'event removed' });
       })
       .catch(err => {
         console.log(err);
-        res.status(500).json({ message: "Unknown error" });
+        res.status(500).json({ message: 'Unknown error' });
       });
   }
 }

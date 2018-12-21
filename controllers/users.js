@@ -1,5 +1,5 @@
-import bcrypt from "bcrypt";
-import { User } from "../models";
+import bcrypt from 'bcrypt';
+import { User } from '../models';
 export default class UserController {
   static allUsers(req, res) {
     User.findAll()
@@ -19,7 +19,7 @@ export default class UserController {
         if (errors) {
           return res
             .status(500)
-            .json({ message: "password encryption failed" });
+            .json({ message: 'password encryption failed' });
         }
         User.create({ email, firstName, lastName, password: hash, phone })
           .then(user => {
@@ -27,7 +27,7 @@ export default class UserController {
           })
           .catch(err => {
             console.log(err.errors);
-            res.status(500).json({ message: "Registration failed" });
+            res.status(500).json({ message: 'Registration failed' });
           });
       });
     });
@@ -41,7 +41,7 @@ export default class UserController {
       })
       .catch(err => {
         console.log(err);
-        res.json({ message: "Unknown error occured" });
+        res.json({ message: 'Unknown error occured' });
       });
   }
 }

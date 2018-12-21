@@ -1,4 +1,4 @@
-import { Post } from "../models";
+import { Post } from '../models';
 
 export default class PostControllers {
   static allPosts(req, res) {
@@ -8,7 +8,7 @@ export default class PostControllers {
       })
       .catch(err => {
         console.log(err);
-        res.status(500).json({ message: "Unknown error" });
+        res.status(500).json({ message: 'Unknown error' });
       });
   }
 
@@ -20,7 +20,7 @@ export default class PostControllers {
       })
       .catch(error => {
         console.log(error);
-        res.status(500).json({ message: "Unknown error" });
+        res.status(500).json({ message: 'Unknown error' });
       });
   }
 
@@ -32,7 +32,7 @@ export default class PostControllers {
       })
       .catch(err => {
         console.log(err);
-        res.status(500).json({ message: "Unknown error" });
+        res.status(500).json({ message: 'Unknown error' });
       });
   }
 
@@ -47,7 +47,7 @@ export default class PostControllers {
       })
       .catch(err => {
         console.log(err);
-        res.status(500).json({ message: "Unknown error" });
+        res.status(500).json({ message: 'Unknown error' });
       });
   }
 
@@ -57,11 +57,11 @@ export default class PostControllers {
         post.destory();
       })
       .then(() => {
-        res.json({ message: "post deleted", status: "success" });
+        res.json({ message: 'post deleted', status: 'success' });
       })
       .catch(err => {
         console.log(err);
-        res.status(500).json({ message: "Unknown error" });
+        res.status(500).json({ message: 'Unknown error' });
       });
   }
 }
