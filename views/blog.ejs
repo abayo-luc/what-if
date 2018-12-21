@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <title>WhatIf-Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="WhatIf, Blog" />
+    <script>
+      addEventListener(
+        "load",
+        function() {
+          setTimeout(hideURLbar, 0);
+        },
+        false
+      );
+
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <!-- Custom CSS -->
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- side nav css file -->
+    <!-- <link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css' /> -->
+    <!-- //side nav css file -->
+    <link href="css/blog.css" rel="stylesheet" type="text/css" />
+    <!-- font-awesome icons -->
+    <link href="css/fontawesome-all.min.css" rel="stylesheet" />
+    <!--web font-->
+    <!-- <link
+      href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=cyrillic,cyrillic-ext,latin-ext,vietnamese"
+      rel="stylesheet"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+      rel="stylesheet"
+    /> -->
+    <!--//web font-->
+  </head>
+
+  <body>
+    <!-- banner -->
+    <div class="w3l-hear-top">
+      <!-- header -->
+      <header>
+        <!-- logo -->
+        <div class="logo">
+          <h1>
+            <a href="index.html" class="text-center">
+              WhatIf - Rwanda <span class="d-block">Blog</span>
+            </a>
+          </h1>
+        </div>
+        <!-- //logo -->
+        <!-- search -->
+        <div class="w3ls_search">
+          <div class="cd-main-header">
+            <ul class="cd-header-buttons">
+              <li>
+                <a class="cd-search-trigger" href="#cd-search">
+                  <span></span>
+                </a>
+              </li>
+            </ul>
+            <!-- cd-header-buttons -->
+          </div>
+          <div id="cd-search" class="cd-search">
+            <form action="#" method="post">
+              <input name="Search" type="search" placeholder="search site" />
+            </form>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- //search -->
+      </header>
+      <!-- //header -->
+      <!-- banner-slider -->
+      <div class="diagonal-header">
+        <section class="diagonal-stripe-one inner-bg">
+          <div class="container"><div class="ml-md-5 pl-md-5"></div></div>
+        </section>
+      </div>
+      <!-- banner-slider -->
+    </div>
+    <!-- //banner -->
+    <!-- breadcrumbs -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Blog</li>
+      </ol>
+    </nav>
+    <!-- //breadcrumbs -->
+    <!-- blog -->
+    <div class="container pt-3">
+      <div class="row py-sm-5 pb-5">
+        <!-- blog grid -->
+        <%JSON.parse(posts).forEach((post, index) =>{%>
+        <div class="col-lg-4 col-md-6 card-holder">
+          <div class="card">
+            <div class="card-header p-0">
+              <a href=<%=`posts/${post.id}`%>>
+                <img
+                  class="card-img-bottom"
+                  src="images/g3.jpg"
+                  alt="Card image cap"
+                />
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="border-bottom py-2">
+                <h5 class="blog-title card-title font-weight-bold">
+                  <a href=<%=`posts/${post.id}`%>>
+                    <%= post.title%>
+                  </a>
+                </h5>
+              </div>
+              <div class="blog_w3icon pt-4">
+                <span> <i class="fas fa-user mr-2"></i>Amdin</span>
+                <span class="ml-3"> <i class="far fa-heart mr-1"></i>34</span>
+              </div>
+              <p class="card-text mt-3">
+                Cras ultricies ligula sed magna dictum porta. Mauris blandit
+                aliquet elit, eget tincidunt nibh pulvinar a. Pellentesque in
+                ipsum id orci porta sed magna dictum dapibus.
+              </p>
+              <a  class="blog-btn text-dark" href=<%=`posts/${post.id}`%>>Read more</a>
+            </div>
+            <div class="card-footer">
+              <p class="card-text text-right">
+                <small class="text-muted"
+                  ><%= new Date(post.createdAt).toDateString() %></small
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <%})%>
+        <!-- //blog grid -->
+      </div>
+    </div>
+    <!-- //blog -->
+    <!-- footer -->
+    <footer class="py-5">
+      <div class="container">
+        <div class="agileinfo-grids">
+          <div class="agile-grid-left agile-grid-right text-center">
+            <div class="social mb-4">
+              <ul>
+                <li>
+                  <a href="#"><i class="fab mr-2 fa-facebook-f"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab mr-2 fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab mr-2 fa-instagram"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="copyright text-center">
+          <p>
+            © 2018 WhatIf Rwanda. All Rights Reserved | Design by
+            <a href="#">Luc Abayo</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- //footer -->
+    <!-- js-->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <!-- search-bar -->
+    <script src="js/main.js"></script>
+    <!-- //search-bar-->
+    <!-- move-top -->
+    <script src="js/move-top.js"></script>
+    <!-- easing -->
+    <script src="js/easing.js"></script>
+    <!-- smooth scroll -->
+    <script src="js/SmoothScroll.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.js "></script>
+  </body>
+</html>

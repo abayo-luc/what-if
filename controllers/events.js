@@ -7,7 +7,7 @@ export default class EventControllers {
         res.json({ events });
       })
       .catch(err => {
-        res.status(500).json({ message: "Unknown error" });
+        res.status(500).json("index", { errors: { message: "Unknown error" } });
       });
   }
 
