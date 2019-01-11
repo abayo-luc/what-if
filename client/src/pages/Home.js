@@ -9,7 +9,33 @@ import Services from "../components/Services";
 import About from "../components/About";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
-export default class HomePage extends Component {
+//redux things
+import axios from "axios";
+class HomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      events: [],
+      isLoading: true
+    };
+  }
+  componentDidMount = () => {
+    axios
+      .get("/api/events")
+      .then(res => {
+        const {
+          data: { events }
+        } = res;
+        console.log(events);
+        this.setState({
+          events
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <div>
@@ -17,7 +43,18 @@ export default class HomePage extends Component {
         <Banner />
         <About />
         <Services />
-        <EventSingle />
+        <section class="experience py-5" id="experience">
+          <div class="container py-3">
+            <h3 class="heading">Events</h3>
+            {this.state.events.map((event, index) => {
+              return (
+                <div key={index}>
+                  <EventSingle id={index + 1} event={event} />
+                </div>
+              );
+            })}
+          </div>
+        </section>
         <RecentArticles />
         <Gallery />
         <Testimonials />
@@ -27,3 +64,5 @@ export default class HomePage extends Component {
     );
   }
 }
+
+export default HomePage;

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon --exec babel-node server.js",
-    "start": "npm start --prefix client"
+    "client": "npm start --prefix client",
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "babel-preset-env": "^1.7.0",
     "bcrypt": "^3.0.2",
     "cls-hooked": "^4.2.2",
+    "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
     "ejs": "2.5.5",
     "express": "^4.16.4",
