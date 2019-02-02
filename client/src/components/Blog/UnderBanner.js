@@ -1,16 +1,16 @@
 import React from "react";
-
-export const UnderBanner = params => {
+import { Link } from "react-router-dom";
+export const UnderBanner = ({ path }) => {
   return (
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li class="breadcrumb-item ">
-          <a href="/posts">Blog</a>
+          <Link to="/blog">Blog</Link>
         </li>
-        <li class="breadcrumb-item active">Post</li>
+        <li class="breadcrumb-item active">{path}</li>
       </ol>
     </nav>
   );

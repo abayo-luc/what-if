@@ -8,7 +8,7 @@ export default class PostPage extends Component {
     return (
       <div>
         <BlogBanner />
-        <UnderBanner />
+        <UnderBanner path="Post" />
         <PostSingle />
       </div>
     );

@@ -8,13 +8,15 @@ import pages from "./routes/pages";
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 //load static pages html and cess
-app.use(express.static("views/"));
-app.set("view engine", "ejs");
+app.use(express.static(path.join(__dirname, "client/build")));
 
 //api routers
 app.use("/api", routers);
 //render views
 // app.use("/", pages);
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`app listening to ${PORT}`);
