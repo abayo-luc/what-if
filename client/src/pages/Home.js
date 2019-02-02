@@ -28,7 +28,7 @@ class HomePage extends Component {
         } = res;
         console.log(events);
         this.setState({
-          events
+          events: [...events]
         });
       })
       .catch(err => {
@@ -43,9 +43,9 @@ class HomePage extends Component {
         <Banner />
         <About />
         <Services />
-        <section class="experience py-5" id="experience">
-          <div class="container py-3">
-            <h3 class="heading">Events</h3>
+        <section className="experience py-5" id="experience">
+          <div className="container py-3">
+            <h3 className="heading">Events</h3>
             {this.state.events.map((event, index) => {
               return (
                 <div key={index}>

@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "client/build")));
 
 //api routers
-app.use("/api", routers);
+app.use("/api/v1/", routers);
 //render views
 // app.use("/", pages);
 app.get("*", (req, res) => {

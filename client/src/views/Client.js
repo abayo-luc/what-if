@@ -16,7 +16,7 @@ export default class Client extends Component {
           <div>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/blog" component={BlogPage} />
-            <Route exact path="/posts" component={PostPage} />
+            <Route exact path="/posts/:id" component={PostPage} />
             <Route exact path="/new_post" component={NewPost} />
           </div>
         </Router>

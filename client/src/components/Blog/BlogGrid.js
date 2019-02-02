@@ -1,22 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export const BlogGrid = params => {
+export const BlogGrid = ({ post }) => {
   return (
     <div class="col-lg-4 col-md-6 card-holder">
       <div class="card">
         <div class="card-header p-0">
-          <a href="#">
+          <Link to={`/posts/${post.id}`}>
             <img
-              class="card-img-bottom"
-              src={require("../../images/g3.jpg")}
-              alt="Card image cap"
+              className="card-img-bottom"
+              src={
+                post.cover
+                  ? post.cover
+                  : "https://res.cloudinary.com/dghepsznx/image/upload/v1549123822/WhatIf/placeholder-image.jpg"
+              }
+              alt="cover"
             />
-          </a>
+          </Link>
         </div>
         <div class="card-body">
           <div class="border-bottom py-2">
             <h5 class="blog-title card-title font-weight-bold">
-              <Link to="/posts">The Title</Link>
+              <Link to={`/posts/${post.id}`}>{post.title}</Link>
             </h5>
           </div>
           <div class="blog_w3icon pt-4">
@@ -36,13 +40,15 @@ export const BlogGrid = params => {
             elit, eget tincidunt nibh pulvinar a. Pellentesque in ipsum id orci
             porta sed magna dictum dapibus.
           </p>
-          <a class="blog-btn text-dark" href="#">
+          <Link className="blog-btn text-dark" to={`/posts/${post.id}`}>
             Read more
-          </a>
+          </Link>
         </div>
         <div class="card-footer">
           <p class="card-text text-right">
-            <small class="text-muted">7th Jan 2018</small>
+            <small class="text-muted">
+              {new Date(post.updatedAt).toDateString()}
+            </small>
           </p>
         </div>
       </div>
