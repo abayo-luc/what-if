@@ -8,6 +8,7 @@
     "server": "nodemon --exec babel-node server.js",
     "client": "npm start --prefix client",
     "heroku-build": "cd client && npm install && npm run build",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "nodemon --exec babel-node server.js"
   },
   "repository": {
@@ -34,7 +35,8 @@
     "path": "^0.12.7",
     "pg": "^7.7.1",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "sequelize-cli": "^5.4.0"
   },
   "engines": {
     "node": "10.x"
