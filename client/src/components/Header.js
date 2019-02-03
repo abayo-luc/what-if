@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 export const Header = params => {
   return (
     <header>
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light py-4">
+      <div className="container">
+        <nav className="navbar navbar-expand-lg navbar-light py-4">
           <h1>
-            <a class="navbar-brand" href="index.html">
+            <a className="navbar-brand" href="index.html">
               WhatIf<span>Rwanda</span>
             </a>
           </h1>
 
           <button
-            class="navbar-toggler ml-md-auto"
+            className="navbar-toggler ml-md-auto"
             type="button"
             data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -20,67 +20,72 @@ export const Header = params => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon" />
+            <span className="navbar-toggler-icon" />
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-lg-auto text-center">
-              <li class="nav-item active mr-lg-4">
-                <a class="nav-link" href="index.html">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ml-lg-auto text-center">
+              <li className="nav-item active mr-lg-4">
+                <a className="nav-link" href="index.html">
                   Home
-                  <span class="sr-only">(current)</span>
+                  <span className="sr-only">(current)</span>
                 </a>
               </li>
-              <li class="nav-item mr-lg-4">
-                <a class="nav-link scroll" href="#about">
+              <li className="nav-item mr-lg-4">
+                <a className="nav-link scroll" href="#about">
                   about
                 </a>
               </li>
-              <li class="nav-item mr-lg-4">
-                <a class="nav-link scroll" href="#services">
+              <li className="nav-item mr-lg-4">
+                <a className="nav-link scroll" href="#services">
                   What We Do
                 </a>
               </li>
-              <li class="nav-item mr-lg-4">
-                <a class="nav-link scroll" href="#experience">
+              <li className="nav-item mr-lg-4">
+                <a className="nav-link scroll" href="#experience">
                   Events
                 </a>
               </li>
-              <li class="nav-item mr-lg-4">
-                <a class="nav-link scroll" href="#blog">
+              <li className="nav-item mr-lg-4">
+                <a className="nav-link scroll" href="#blog">
                   Highlight
                 </a>
               </li>
-              <li class="dropdown nav-item mr-lg-4">
+              <li className="dropdown nav-item mr-lg-4">
                 <a
                   href="#"
                   data-toggle="dropdown"
-                  class="nav-link dropdown-toggle "
+                  className="nav-link dropdown-toggle "
                 >
                   More
-                  <b class="caret" />
+                  <b className="caret" />
                 </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li class="nav-item">
+                <ul className="dropdown-menu" role="menu">
+                  <li className="nav-item">
                     <Link to="/blog" className="nav-link">
                       Blog
                     </Link>
                   </li>
-                  <li class="nav-item">
-                    <a href="#projects" class="nav-link scroll">
+                  <li className="nav-item">
+                    <a href="#projects" className="nav-link scroll">
                       Gallery
                     </a>
                   </li>
-                  <div class="dropdown-divider" />
-                  <li class="nav-item">
-                    <a href="#testimonials" class="nav-link scroll">
+                  <div className="dropdown-divider" />
+                  <li className="nav-item">
+                    <a href="#testimonials" className="nav-link scroll">
                       Testimonials
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link scroll" href="#contact">
+                  <li className="nav-item">
+                    <a className="nav-link scroll" href="#contact">
                       Contact
                     </a>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/user_login" className="nav-link">
+                      Login
+                    </Link>
                   </li>
                 </ul>
               </li>

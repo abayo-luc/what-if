@@ -1,9 +1,14 @@
 import express from "express";
 import path from "path";
+import passport from "passport";
+import passportConfiguriton from "./middlewares/passport";
 const app = express();
 //bring in the routers
 import routers from "./routes";
 import pages from "./routes/pages";
+//passport configuration
+app.use(passport.initialize());
+passportConfiguriton(passport);
 // configuration middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

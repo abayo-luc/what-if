@@ -12,3 +12,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.login-pg .contact-grids {
+  display: flex;
+  padding-top: 15%;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}

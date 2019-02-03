@@ -97,3 +97,13 @@ h5.card-title a {
   border-bottom-right-radius: calc(0.25rem - 1px);
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
+
+.event-form {
+  margin: 0px 15px;
+}
+
+/* event dialog header */
+.MuiAppBar-colorPrimary-196 {
+  color: #fff;
+  background-color: #343a40 !important;
+}

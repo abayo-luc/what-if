@@ -7,6 +7,7 @@ import NewPost from "../pages/NewPost";
 //redux things
 import { Provider } from "react-redux";
 import store from "../store";
+import Login from "../pages/Login";
 
 export default class Client extends Component {
   render() {
@@ -17,7 +18,8 @@ export default class Client extends Component {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/blog" component={BlogPage} />
             <Route exact path="/posts/:id" component={PostPage} />
-            <Route exact path="/new_post" component={NewPost} />
+            <Route exact path="/posts_new" component={NewPost} />
+            <Route exact path="/user_login" component={Login} />
           </div>
         </Router>
       </Provider>
