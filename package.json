@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon --exec babel-node server.js",
     "start": "nodemon --exec babel-node server.js"
   },
   "repository": {
@@ -23,19 +24,29 @@
     "babel-preset-env": "^1.7.0",
     "bcrypt": "^3.0.2",
     "cls-hooked": "^4.2.2",
+    "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "ejs": "2.5.5",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
     "nodemon": "^1.18.7",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "path": "^0.12.7",
     "pg": "^7.7.1",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "sequelize-cli": "^5.4.0",
+    "slug": "^1.1.0"
   },
   "engines": {
     "node": "10.x"
   },
   "production": {
     "use_env_variable": "DATABASE_URL"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "faker": "^4.1.0"
   }
 }

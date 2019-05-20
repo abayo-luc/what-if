@@ -2,19 +2,27 @@ import { Post } from '../models';
 
 export default class PostControllers {
   static allPosts(req, res) {
-    Post.findAll()
+    const { page = 1, limit = 12 } = req.query;
+    Post.findAll({
+      order: [['createdAt', 'DESC']],
+      offset: (Number(page) - 1) * Number(limit),
+      limit
+    })
       .then(posts => {
-        res.json({ posts });
+        if (posts.length === 0) {
+          return res.status(404).json({ message: 'No more posts found' });
+        }
+        res.json({ posts, count: posts.length });
       })
       .catch(err => {
-        console.log(err);
         res.status(500).json({ message: 'Unknown error' });
       });
   }
 
   static create(req, res) {
-    const { title, content, author = 1 } = req.body;
-    Post.create({ title, content, author })
+    const { title, content, cover } = req.body;
+    const { id } = req.user;
+    Post.create({ title, content, author: id, cover, slug: '' })
       .then(post => {
         res.json({ post });
       })
@@ -25,9 +33,16 @@ export default class PostControllers {
   }
 
   static find(req, res) {
-    const { id } = req.params;
-    Post.findById(id)
+    const { slug } = req.params;
+    Post.findOne({
+      where: {
+        slug
+      }
+    })
       .then(post => {
+        if (!post) {
+          return res.status(404).json({ message: 'Post not found' });
+        }
         res.json({ post });
       })
       .catch(err => {

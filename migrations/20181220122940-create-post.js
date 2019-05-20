@@ -4,18 +4,29 @@ module.exports = {
     return queryInterface.createTable('Posts', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        unique: true,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50),
+        allowNull: false
+      },
+      cover: {
+        type: Sequelize.STRING,
+        defaultValue:
+          'https://res.cloudinary.com/dghepsznx/image/upload/v1549123382/WhatIf/3.jpg',
+        allowNull: false
       },
       content: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(10000),
+        allowNull: false
       },
       author: {
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

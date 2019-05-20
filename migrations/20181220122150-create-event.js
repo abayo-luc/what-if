@@ -4,9 +4,10 @@ module.exports = {
     return queryInterface.createTable('Events', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        unique: true,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
       },
       title: {
         type: Sequelize.STRING
