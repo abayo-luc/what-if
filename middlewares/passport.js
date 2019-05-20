@@ -1,6 +1,6 @@
-import dotenv from "dotenv";
-import passportJwt from "passport-jwt";
-import models from "../models";
+import dotenv from 'dotenv';
+import passportJwt from 'passport-jwt';
+import models from '../models';
 
 dotenv.config();
 const { Strategy, ExtractJwt } = passportJwt;
@@ -18,14 +18,18 @@ export default passport => {
           where: {
             id: jwtPayload.id
           },
-          attributes: ["id", "firstName", "lastName", "email", "phone"]
+          attributes: ['id', 'firstName', 'lastName', 'email', 'phone']
         });
         if (user) {
           return done(null, user);
         }
-        return done(null, false);
+        return done(null, false, {
+          message: 'Unauthorized, please login first!'
+        });
       } catch (error) {
-        return done(error, false);
+        return done(error, false, {
+          message: 'Unauthorized, please login first!'
+        });
       }
     })
   );

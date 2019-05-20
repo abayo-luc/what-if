@@ -1,12 +1,13 @@
-"use strict";
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Posts", {
+    return queryInterface.createTable('Posts', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        unique: true,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
       },
       title: {
         type: Sequelize.STRING(50),
@@ -15,7 +16,7 @@ module.exports = {
       cover: {
         type: Sequelize.STRING,
         defaultValue:
-          "https://res.cloudinary.com/dghepsznx/image/upload/v1549123382/WhatIf/3.jpg",
+          'https://res.cloudinary.com/dghepsznx/image/upload/v1549123382/WhatIf/3.jpg',
         allowNull: false
       },
       content: {
@@ -23,7 +24,8 @@ module.exports = {
         allowNull: false
       },
       author: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false
       },
       createdAt: {
@@ -37,6 +39,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Posts");
+    return queryInterface.dropTable('Posts');
   }
 };
