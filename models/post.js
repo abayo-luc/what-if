@@ -12,9 +12,8 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUIDV4
       },
       title: DataTypes.STRING,
-      cover: DataTypes.STRING,
       content: DataTypes.STRING,
-      author: DataTypes.UUID,
+      userId: DataTypes.UUID,
       slug: { type: DataTypes.STRING, allowNull: false }
     },
     {
@@ -27,8 +26,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   );
-  Post.associate = function(models) {
-    // associations can be defined here
+  Post.associate = models => {
+    Post.belongsTo(models.User, {
+      foreignKey: 'userId',
+      as: 'author',
+      onDelete: 'CASCADE',
+      hooks: true
+    });
   };
   return Post;
 };

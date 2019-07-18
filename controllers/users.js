@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { User } from '../models';
+import dbErrors from '../utils/dbErrors';
 const userAttributes = [
   'id',
   'firstName',
@@ -25,20 +26,20 @@ export default class UserController {
   static create(req, res) {
     const { email, firstName, lastName, password, phone } = req.body;
 
-    bcrypt.genSalt(10, (err, salt) => {
+    return bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(password, salt, (errors, hash) => {
         if (errors) {
           return res
             .status(500)
-            .json({ message: 'password encryption failed' });
+            .json({ message: errors.message || 'password encryption failed' });
         }
         User.create({ email, firstName, lastName, password: hash, phone })
           .then(user => {
             res.json({ user });
           })
           .catch(err => {
-            console.warn(err);
-            res.status(500).json({ message: 'Registration failed' });
+            const error = dbErrors(err.errors);
+            res.status(500).json({ message: error || 'Registration failed' });
           });
       });
     });
@@ -46,19 +47,19 @@ export default class UserController {
 
   static find(req, res) {
     const { id } = req.params;
-    User.findOne({ where: { id }, attributes: userAttributes })
+    return User.findOne({ where: { id }, attributes: userAttributes })
       .then(user => {
         return res.json({ user });
       })
       .catch(err => {
-        return res.json({ message: 'Internal server error' });
+        return res.json({ message: err.message || 'Internal server error' });
       });
   }
 
   static async login(req, res) {
     const { email, password } = req.body;
 
-    User.findOne({
+    return User.findOne({
       where: {
         email
       }
@@ -94,7 +95,9 @@ export default class UserController {
         });
       })
       .catch(error => {
-        res.status(500).json({ message: 'Login failed', errors: error });
+        res
+          .status(500)
+          .json({ message: 'Login failed', errors: error.message });
       });
   }
 }

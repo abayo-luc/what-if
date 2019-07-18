@@ -10,20 +10,14 @@ module.exports = {
         defaultValue: Sequelize.UUIDV4
       },
       title: {
-        type: Sequelize.STRING(50),
-        allowNull: false
-      },
-      cover: {
-        type: Sequelize.STRING,
-        defaultValue:
-          'https://res.cloudinary.com/dghepsznx/image/upload/v1549123382/WhatIf/3.jpg',
+        type: Sequelize.STRING(60),
         allowNull: false
       },
       content: {
-        type: Sequelize.STRING(10000),
+        type: Sequelize.TEXT,
         allowNull: false
       },
-      author: {
+      userId: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         allowNull: false

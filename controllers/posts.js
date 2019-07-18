@@ -1,4 +1,4 @@
-import { Post } from '../models';
+import { Post, User } from '../models';
 
 export default class PostControllers {
   static allPosts(req, res) {
@@ -20,63 +20,64 @@ export default class PostControllers {
   }
 
   static create(req, res) {
-    const { title, content, cover } = req.body;
+    const { title, content } = req.body;
     const { id } = req.user;
-    Post.create({ title, content, author: id, cover, slug: '' })
+    Post.create({ title, content, userId: id, slug: '' })
       .then(post => {
         res.json({ post });
       })
       .catch(error => {
         console.log(error);
-        res.status(500).json({ message: 'Unknown error' });
+        res.status(500).json({ message: error.message || 'Unknown error' });
       });
   }
 
-  static find(req, res) {
+  static async find(req, res) {
     const { slug } = req.params;
-    Post.findOne({
-      where: {
-        slug
+    try {
+      const post = await Post.findOne({
+        where: {
+          slug
+        },
+        include: [{ model: User, as: 'author' }]
+      });
+      if (!post) {
+        return res.status(404).json({ message: 'Post not found' });
       }
-    })
-      .then(post => {
-        if (!post) {
-          return res.status(404).json({ message: 'Post not found' });
-        }
-        res.json({ post });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json({ message: 'Unknown error' });
-      });
+      return res.json({ post });
+    } catch (error) {
+      res.status(500).json({ message: err.message || 'Unknown error' });
+    }
   }
 
-  static update(req, res) {
-    const { title, content, author } = req.body;
-    Post.update(
-      { title, content },
-      { returning: true, where: { id: req.params.id } }
-    )
-      .then(post => {
-        res.json({ post: post[0][0] });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json({ message: 'Unknown error' });
-      });
+  static async update(req, res) {
+    try {
+      const { title, content } = req.body;
+      const { slug } = req.params;
+      const post = await Post.findOne({ where: { slug } });
+      if (!post) {
+        return res.status(404).json({ message: 'Record not found' });
+      }
+      const response = await post.update({ title, content });
+      return res.status(201).json({ post: response });
+    } catch (err) {
+      return res.status(500).json({ message: err.message || 'Unknown error' });
+    }
   }
 
-  static delete(req, res) {
-    Post.findById(req.params.id)
-      .then(post => {
-        post.destory();
-      })
-      .then(() => {
-        res.json({ message: 'post deleted', status: 'success' });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json({ message: 'Unknown error' });
-      });
+  static async delete(req, res) {
+    try {
+      const { id } = req.params;
+      const post = await Post.findByPk(id);
+      if (!post) {
+        return res.status(404).json({ message: 'Record not found' });
+      }
+      await post.destroy();
+      return res.json({ message: 'post deleted', status: 'success' });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: error.message || 'Unknown error' });
+    }
   }
 }
