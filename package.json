@@ -22,7 +22,7 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "bcrypt": "^3.0.2",
+    "bcrypt": "^5.0.0",
     "cls-hooked": "^4.2.2",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
